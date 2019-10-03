@@ -4,13 +4,14 @@
  * 
  */
 
-public class PlayWithInheritance
-{
-	public static int RUN_EXAMPLE = 1; // change this to try different behaviors
-										// below
+public class PlayWithInheritance {
+	
+	public static int OVERRIDING_STATIC = 7;
+	
+	public static int RUN_EXAMPLE = OVERRIDING_STATIC; // change this to try different behaviors below
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
+		
 		StdOut.println();
 
 		// common to all examples...
@@ -25,12 +26,10 @@ public class PlayWithInheritance
 
 		// change RUN_EXAMPLE above to run any one of the following 6 examples
 
-		if (RUN_EXAMPLE == 1)
-		{
+		if (RUN_EXAMPLE == 1) {
 			StdOut.println("Note the output: constructor chaining.");
 		}
-		else if (RUN_EXAMPLE == 2)
-		{
+		else if (RUN_EXAMPLE == 2) {
 			// When a reference is treated like a String
 			// => toString() is automatically invoked, and its returned value
 			// used instead!
@@ -41,8 +40,7 @@ public class PlayWithInheritance
 			StdOut.println(aSingleDie.toString());
 			StdOut.println("Concatenating a string to a reference: " + aSingleDie.toString());
 		}
-		else if (RUN_EXAMPLE == 3)
-		{
+		else if (RUN_EXAMPLE == 3) {
 			// concatenate " " + super.toString() to end of toString() code
 			// inside each of 3 classes, then watch the result when run again.
 
@@ -50,8 +48,7 @@ public class PlayWithInheritance
 			StdOut.println("crooked1's toString(): '" + crooked1 + "'");
 			StdOut.println("crooked2's toString(): '" + crooked2 + "'");
 		}
-		else if (RUN_EXAMPLE == 4)
-		{
+		else if (RUN_EXAMPLE == 4) {
 			// Die alias = die1; // try replacing this line with either below
 			Die alias = crooked1; // upcasting!
 			// Die alias = crooked2; // ditto
@@ -59,8 +56,7 @@ public class PlayWithInheritance
 			StdOut.println("alias's toString(): '" + alias.toString() + "'");
 			StdOut.println();
 		}
-		else if (RUN_EXAMPLE == 5)
-		{
+		else if (RUN_EXAMPLE == 5) {
 			Die alias;
 
 			double toss = Math.random(); // [0.0..1.0)
@@ -78,8 +74,7 @@ public class PlayWithInheritance
 
 			describe("Which toString() is called? Answer is: ", alias);
 		}
-		else if (RUN_EXAMPLE == 6)
-		{
+		else if (RUN_EXAMPLE == 6) {
 			Die another = new Die();
 
 			Dice dice = new Dice(aSingleDie, crooked1); // we'll try substituting here
@@ -89,6 +84,11 @@ public class PlayWithInheritance
 			int result = dice.getLastRoll();
 
 			StdOut.printf("Roll of '%s' and '%s' is: %d.\n", aSingleDie, crooked1, result);
+		}
+		else if (RUN_EXAMPLE == OVERRIDING_STATIC) {
+			Die die = new CrookedDie1();
+			
+			StdOut.println(Die.testStatic());
 		}
 
 		StdOut.println();
@@ -102,8 +102,7 @@ public class PlayWithInheritance
 	 * @param toDescribe
 	 */
 
-	public static void describe(String msg, Die toDescribe)
-	{
+	public static void describe(String msg, Die toDescribe) {
 		StdOut.printf("%s '%s' \n", msg, toDescribe.toString());
 	}
 
